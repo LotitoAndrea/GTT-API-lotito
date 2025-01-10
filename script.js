@@ -1,11 +1,11 @@
 let URL = "https://gpa.madbob.org/query.php?stop=";
 
-function aggiungiPassaggio(linea, orario){
+function aggiungiPassaggio(linea, orario, realtime){
     let div = document.createElement("div");
     let p1 = document.createElement("p");
     let p2 = document.createElement("p");
     p1.innerHTML = linea;
-    p2.innerHTML = orario;
+    p2.innerHTML = orario + (realtime ? "*" : "");
     div.appendChild(p1);
     div.appendChild(p2);
     div.classList.add("col");
@@ -13,14 +13,13 @@ function aggiungiPassaggio(linea, orario){
 }
 
 function mostra(array){
-    // Rimuovi solo i div aggiunti dinamicamente, non il contenuto originale
     let lista = document.getElementById("lista");
     while (lista.children.length > 1) {
         lista.removeChild(lista.lastChild);
     }
 
     array.forEach(element => {
-        aggiungiPassaggio(element.line, element.hour);
+        aggiungiPassaggio(element.line, element.hour, element.realtime);
     });
 
     let text = document.getElementById("num").value;
