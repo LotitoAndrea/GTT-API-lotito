@@ -2,11 +2,16 @@ let URL = "https://gpa.madbob.org/query.php?stop=";
 
 function aggiungiPassaggio(linea, orario, realtime){
     let div = document.createElement("div");
+    let cerchio = document.createElement("div");
     let p1 = document.createElement("p");
     let p2 = document.createElement("p");
-    p1.innerHTML = linea;
-    p2.innerHTML = orario + (realtime ? "*" : "");
-    div.appendChild(p1);
+
+    cerchio.classList.add("cerchio");
+    cerchio.innerHTML = linea;
+
+    p2.innerHTML = orario + (realtime ? " *" : "");
+
+    div.appendChild(cerchio);
     div.appendChild(p2);
     div.classList.add("col");
     document.getElementById("lista").appendChild(div);    
