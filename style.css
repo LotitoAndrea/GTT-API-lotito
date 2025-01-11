@@ -89,7 +89,12 @@ button:hover {
     margin-right: 1em;
     font-weight: bold;
 }
-/*
-#numerolinea, #orario {
-    font-weight: bold;
-}*/
+
+.orari {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.orario {
+    margin-right: 0.5em;
+}

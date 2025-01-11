@@ -1,45 +1,63 @@
 let URL = "https://gpa.madbob.org/query.php?stop=";
 
-function aggiungiPassaggio(linea, orario, realtime){
+function aggiungiPassaggio(linea, orari){
     let div = document.createElement("div");
     let cerchio = document.createElement("div");
-    let p1 = document.createElement("p");
-    let p2 = document.createElement("p");
+    let orariDiv = document.createElement("div");
 
     cerchio.classList.add("cerchio");
     cerchio.innerHTML = linea;
 
-    p2.innerHTML = orario + (realtime ? " *" : "");
+    orariDiv.classList.add("orari");
+    orari.forEach(orario => {
+        let p = document.createElement("p");
+        p.classList.add("orario");
+        p.innerHTML = orario.hour + (orario.realtime ? " *" : "");
+        orariDiv.appendChild(p);
+    });
 
     div.appendChild(cerchio);
-    div.appendChild(p2);
+    div.appendChild(orariDiv);
     div.classList.add("col");
-    document.getElementById("lista").appendChild(div);    
+    return div;
 }
 
 function mostra(array){
     let lista = document.getElementById("lista");
-    while (lista.children.length > 1) {
-        lista.removeChild(lista.lastChild);
-    }
+    lista.innerHTML = '';
 
+    let linee = {};
     array.forEach(element => {
-        aggiungiPassaggio(element.line, element.hour, element.realtime);
+        if (!linee[element.line]) {
+            linee[element.line] = [];
+        }
+        linee[element.line].push({ hour: element.hour, realtime: element.realtime });
     });
 
-    let text = document.getElementById("num").value;
-    if (isNaN(text))
-    {
-        alert("Inserire un numero valido");
+    for (let linea in linee) {
+        let rowDiv = document.createElement("div");
+        rowDiv.classList.add("row");
+        rowDiv.appendChild(aggiungiPassaggio(linea, linee[linea]));
+        lista.appendChild(rowDiv);
+
+        let br = document.createElement("br");
+        lista.appendChild(br);
     }
-    else if (array.length == 0)
-    {
+
+    let text = document.getElementById("num").value;
+    if (isNaN(text)) {
+        alert("Inserire un numero valido");
+    } else if (array.length == 0) {
         alert("Fermata non trovata");
     }
 }
 
 function cercaFermata(){
-fetch(URL + document.getElementById("num").value)
-.then(x => x.json())
-.then(y => mostra(y));
+    fetch(URL + document.getElementById("num").value)
+    .then(response => response.json())
+    .then(data => mostra(data))
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Errore nel recupero dei dati');
+    });
 }
