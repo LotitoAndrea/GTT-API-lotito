@@ -1,9 +1,9 @@
 body {
-    background-color: #7b9aff;
-    font-family: Arial, sans-serif;
+    background-color: #9db4ff;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-shadow: #222222;
+    box-shadow: #363636;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,14 +12,20 @@ body {
 }
 
 h1 {
-    color: #363636;
+    color: #000000;
     font-size: 2em;
     text-align: center;
     margin-bottom: 1em;
 }
 
+h3 {
+    color: #00529F;
+    font-size: .4em;
+    text-align: center;
+    margin-bottom: .5em;
+}
+
 #title {
-    color: #292828;
     font-size: 5em;
     text-align: center;
     margin-bottom: 1em;
@@ -46,7 +52,7 @@ input[type="text"] {
     width: calc(100% - 100px);
     padding: 0.5em;
     margin-right: 1em;
-    border: 1px solid #ccc;
+    border: 1px solid #353535;
     border-radius: 5px;
 }
 
@@ -54,13 +60,13 @@ button {
     padding: 0.5em 1em;
     border: none;
     border-radius: 5px;
-    background-color: #007bff;
-    color: white;
+    background-color: #13a700;
+    color: rgb(0, 0, 0);
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #0b8500;
 }
 
 #lista {
@@ -78,7 +84,7 @@ button:hover {
 }
 
 .cerchio {
-    background-color: yellow;
+    background-color: rgb(255, 251, 0);
     border-radius: 50%;
     width: 40px;
     height: 40px;
