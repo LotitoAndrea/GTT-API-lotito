@@ -58,6 +58,6 @@ function cercaFermata(){
     .then(data => mostra(data))
     .catch(error => {
         console.error('Error:', error);
-        alert('Errore nel recupero dei dati');
+        alert("Errore nella ricera di dati");
     });
 }

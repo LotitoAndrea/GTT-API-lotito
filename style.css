@@ -1,12 +1,12 @@
 body {
-    background-color: #9db4ff;
+    background-color: #8097ff;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-shadow: #363636;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center;    
     align-items: center;
     height: 100vh;
 }
@@ -60,13 +60,14 @@ button {
     padding: 0.5em 1em;
     border: none;
     border-radius: 5px;
-    background-color: #13a700;
-    color: rgb(0, 0, 0);
+    background-color: blue;
+    color: rgb(255, 255, 255);
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #0b8500;
+    background-color: yellow;
+    color : black;
 }
 
 #lista {
