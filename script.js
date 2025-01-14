@@ -12,7 +12,7 @@ function aggiungiPassaggio(linea, orari){
     orari.forEach(orario => {
         let p = document.createElement("p");
         p.classList.add("orario");
-        p.innerHTML = orario.hour + (orario.realtime ? " *" : "");
+        p.innerHTML = orario.hour + (orario.realtime ? " *," : ",");
         orariDiv.appendChild(p);
     });
 
